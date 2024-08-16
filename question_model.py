@@ -17,17 +17,15 @@ class QuestionModel:
 
 
     def get_score(self):
-        print(f"{self.username}: ")
-        print(f"Total answers: {self.total_answers}"
-              f"Total correct answer: {self.correct_answers}")
+        print(f"{self.username}: \n")
+        print(f"Total answers: {self.total_answers} \n"
+              f"Total correct answer: {self.correct_answers} \n")
         if self.correct_answers == self.total_answers:
-            print(f"Fucking genius!")
-            exit("You win!")
-        elif self.correct_answers < 4:
-            print(f"Poorer idiot!")
-            exit("Game Over")
-        else:
-            exit("Game Over")
+            print(f"All correct! You're a fucking genius!")
+        elif self.correct_answers < 2:
+            print(f"Poorer idiot! ♥️")
+
+        exit("Game Over")
 
 
 
