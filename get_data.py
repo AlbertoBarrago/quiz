@@ -3,11 +3,13 @@ import json
 
 
 class QuestionDataService:
-    def __init__(self, argument, length_value, ollama_url="http://localhost:11434"):
+    def __init__(self, argument, length_value, language, difficulty, ollama_url="http://localhost:11434"):
         self.ollama_url = ollama_url
         self.arguments = {
             "argument": argument,
             "length": int(length_value),
+            "language": language,
+            "difficulty": difficulty,
             "stream": False
         }
 
@@ -22,7 +24,9 @@ class QuestionDataService:
                   f"Kind of questions: A true/false questions with its answer and a detailed explanation. "
                   f"Format the response as JSON with keys 'text', 'answer', and 'long_answer'. "
                   f"Format the response simple without wrapping nothing i read code processing response as 'text', 'answer', and 'long_answer'. "
-                  f"The question should be related to {self.arguments['argument']}. ")
+                  f"The question should be related to {self.arguments['argument']}. "
+                  f"The difficulty of the questions should be {self.arguments['difficulty']}. "
+                  f"In this language {self.arguments['language']}")
         print(f"\nWe are generating the questions... 🚀")
         response = self._query_ollama(prompt)
         try:
