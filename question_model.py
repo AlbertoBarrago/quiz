@@ -32,7 +32,6 @@ class QuestionModel:
         for question_list in self.data:
             for element in question_list:
                 result = input(f"\nQ{self.current_answer}: {element.get('text')} ?:")
-                print("\n\n\n\n")
                 if result.lower() == str(element['answer']).lower():
                     self.correct_answers += 1
                 self.current_answer += 1
