@@ -45,8 +45,8 @@ class QuestionModel:
               f"Total answers: {self.total_answers} \n"
               f"Total correct answer: {self.correct_answers} \n")
         if self.correct_answers == len(self.data):
-            print(f"All correct! You're a fucking genius!")
+            print(f"All correct! You're a fucking genius! ")
         elif self.correct_answers < 2:
             print(f"Poorer idiot! ♥️")
         time.sleep(1)
-        exit("Game Over")
+        exit("Game Over ")
