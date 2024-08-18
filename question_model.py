@@ -1,15 +1,17 @@
+import textwrap
 import time
 
 
-def check_answer(user_answer, correct_answer, long_answer, current_score):
+def check_answer(user_answer, correct_answer, long_answer, current_score, total_answers):
     """Check if the answer is correct and print the result"""
     if str(user_answer).lower() == str(correct_answer).lower():
         print(f'\nThis is the correct answer'
-              f'\nCurrent score: {current_score}')
+              f'\nCurrent score: {current_score}/{total_answers}')
     else:
         print(f'\nThis is the wrong answer')
         print(f'The correct answer is {correct_answer}')
-        print(f'\nCuriosity {long_answer}\n\n')
+        wrapped_answer = textwrap.fill(long_answer, width=80)
+        print(f'\nCuriosity:\n{wrapped_answer}\n\n')
 
 
 class QuestionModel:
@@ -31,11 +33,12 @@ class QuestionModel:
     def get_questions(self):
         for question_list in self.data:
             for element in question_list:
-                result = input(f"\nQ{self.current_answer}: {element.get('text')} ?:")
+                text_wrap = textwrap.fill(element.get('text'), width=80)
+                result = input(f"\nQ{self.current_answer}: {text_wrap} ?: ").strip()
                 if result.lower() == str(element['answer']).lower():
                     self.correct_answers += 1
                 self.current_answer += 1
-                check_answer(result, element.get('answer'), element.get('long_answer'), self.correct_answers)
+                check_answer(result, element.get('answer'), element.get('long_answer'), self.correct_answers, self.total_answers)
 
         self.get_score()
 
