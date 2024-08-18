@@ -10,7 +10,6 @@ class QuestionDataService:
             "length": int(length_value),
             "language": language,
             "difficulty": difficulty,
-            "stream": False
         }
 
     def generate_question_data(self):
@@ -27,7 +26,8 @@ class QuestionDataService:
                   f"The question should be related to {self.arguments['argument']}. "
                   f"The difficulty of the questions should be {self.arguments['difficulty']}. "
                   f"In this language {self.arguments['language']}")
-        print(f"\nWe are generating the questions... 🚀")
+        print(f"\nWe are generating the questions... 🚀"
+              f"please be patient the process can take a few minutes.\n")
         response = self._query_ollama(prompt)
         try:
             json_str = response['response']
