@@ -13,3 +13,8 @@ You can set this props on start before generate the questions:
 - number of questions
 - difficulty
 - type of questions
+
+
+# TODO: 
+- [ ] Add restart game
+- [ ] Add UI interface 
