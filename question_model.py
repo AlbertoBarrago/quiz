@@ -34,7 +34,7 @@ class QuestionModel:
         for question_list in self.data:
             for element in question_list:
                 text_wrap = textwrap.fill(element.get('text'), width=80)
-                result = input(f"\nQ{self.current_answer}: {text_wrap} ?: ").strip()
+                result = input(f"\nQ{self.current_answer}: {text_wrap.replace('.', '?')} : ").strip()
                 if result.lower() == str(element['answer']).lower():
                     self.correct_answers += 1
                 self.current_answer += 1
