@@ -20,7 +20,7 @@ class QuestionDataService:
 
     def _generate_question(self):
         prompt = (f"Number of questions to generate: {self.arguments['length']}. "
-                  f"Kind of questions: A true/false questions with its answer and a detailed explanation. "
+                  f"Kind of questions: A true/false questions with its answer and a detailed explanation, add symbol ? at the end of the question. "
                   f"Format the response as JSON with keys 'text', 'answer', and 'long_answer'. "
                   f"Format the response simple without wrapping nothing i read code processing response as 'text', 'answer', and 'long_answer'. "
                   f"The question should be related to {self.arguments['argument']}. "
@@ -47,7 +47,7 @@ class QuestionDataService:
 
     def _query_ollama(self, prompt):
         payload = {
-            "model": "llama3.1",
+            "model": "llama3",
             "prompt": prompt,
             "stream": False,
             "response_format": "json"
